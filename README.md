@@ -2,6 +2,8 @@
 
 In this guide, we will rate limit a sample REST API called **Httpbin**. In reality, this API is just a Request&Response service that contains some useful endopints for debugging purpouses. The one that we are focuesd on right now is a GET request for getting cookie data.
 
+Big kudos to [Gui](https://github.com/Kuadrant/kuadrant-operator/commits?author=guicassolato) for his original guide on [Authenticated Rate Limiting for Application Developers](https://github.com/Kuadrant/kuadrant-operator/blob/7e8b91103d954bd91d293a62203063a89931dad4/doc/user-guides/authenticated-rl-for-app-developers.md). Most of the material was taken from it.
+
 We will define 2 users of the API, which can send requests to the API at different rates, based on their user IDs. The authentication method used is **API key**.
 
 | User ID | Rate limit                             |
