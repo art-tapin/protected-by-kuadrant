@@ -48,13 +48,13 @@ EOF
 Navigate to `protected-by-kuadrant` root folder and create the deployment:
 
 ```sh
-kubectl apply -f examples/httpbin/httpbin.yaml
+kubectl apply -f example/httpbin/httpbin.yaml
 ```
 
 Create a HTTPRoute to route traffic to the service via Istio Ingress Gateway:
 
 ```sh
-kubectl apply -f examples/httpbin/route-httpbin.yaml
+kubectl apply -f example/httpbin/route-httpbin.yaml
 ```
 
 Verify the route works:
@@ -76,7 +76,7 @@ Create a Kuadrant `AuthPolicy` to configure the authentication.
 
 This AuthPolicy safeguards the paths that match "/cookies*." It employs an "api-key-users" identity scheme, which utilizes API key credentials found in the authorization header. This policy ensures that only authenticated users with valid API keys can access the protected "/cookies*" endpoints:
 ```sh
-kubectl apply -f examples/httpbin/authpolicy-api-based.yaml
+kubectl apply -f example/httpbin/authpolicy-api-based.yaml
 ```
 
 Verify the authentication works by sending a request to the Httpbin API without API key:
@@ -93,7 +93,7 @@ Create API keys for users `alice` and `bob` to authenticate:
 > **Note:** Kuadrant stores API keys as Kubernetes Secret resources. User metadata can be stored in the annotations of the resource.
 
 ```sh
-kubectl apply -f examples/httpbin/api-keys-bob-alice.yaml
+kubectl apply -f example/httpbin/api-keys-bob-alice.yaml
 ```
 
 ### ④ Enforce authenticated rate limiting on requests to the Httpbin API
@@ -101,7 +101,7 @@ kubectl apply -f examples/httpbin/api-keys-bob-alice.yaml
 Create a Kuadrant `RateLimitPolicy` to configure rate limiting:
 
 ```sh
-kubectl apply -f examples/httpbin/v2-rate-limit-policy.yaml
+kubectl apply -f example/httpbin/v2-rate-limit-policy.yaml
 ```
 
 > **Note:** It may take a couple of minutes for the RateLimitPolicy to be applied depending on your cluster.
