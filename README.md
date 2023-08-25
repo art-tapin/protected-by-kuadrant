@@ -1,4 +1,4 @@
-# Protecting a simple service with Kudrant
+# Protecting a simple service with Kuadrant
 
 In this guide, we will rate limit a sample REST API called **Httpbin**. In reality, this API is just a Request&Response service that contains some useful endopints for debugging purpouses. The one that we are focuesd on right now is a GET request for getting cookie data.
 
