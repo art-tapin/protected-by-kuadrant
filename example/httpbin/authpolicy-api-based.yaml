@@ -1,0 +1,30 @@
+apiVersion: kuadrant.io/v1beta1
+kind: AuthPolicy
+metadata:
+  name: httpbin
+spec:
+  targetRef:
+    group: gateway.networking.k8s.io
+    kind: HTTPRoute
+    name: httpbin
+  rules:
+  - paths: ["/cookies*"]
+  authScheme:
+    identity:
+      - name: api-key-users
+        apiKey:
+          allNamespaces: true
+          selector:
+            matchLabels:
+              app: httpbin
+        credentials:
+          in: authorization_header
+          keySelector: APIKEY
+    response:
+      - name: identity
+        json:
+          properties:
+            - name: userid
+              valueFrom:
+                authJSON: auth.identity.metadata.annotations.secret\.kuadrant\.io/user-id
+        wrapper: envoyDynamicMetadata
